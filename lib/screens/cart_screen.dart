@@ -39,7 +39,7 @@ class CartScreen extends StatelessWidget {
                     backgroundColor: Theme.of(context).primaryColor,
                   ),
                   FlatButton(
-                    onPressed: null,
+                    onPressed: () {},
                     child: Text(
                       'Order Now',
                     ),
@@ -55,10 +55,12 @@ class CartScreen extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               itemBuilder: (context, index) => ci.CartItem.name(
-                  cart.items.values.toList()[index].id,
-                  cart.items.values.toList()[index].price,
-                  cart.items.values.toList()[index].quantity,
-                  cart.items.values.toList()[index].title),
+                cart.items.values.toList()[index].id,
+                cart.items.values.toList()[index].price,
+                cart.items.values.toList()[index].quantity,
+                cart.items.values.toList()[index].title,
+                cart.items.keys.toList()[index],
+              ),
               itemCount: cart.itemCount,
             ),
           )
