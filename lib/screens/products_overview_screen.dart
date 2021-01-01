@@ -4,7 +4,6 @@ import 'package:shop_app/providers/cart.dart';
 import 'package:shop_app/screens/cart_screen.dart';
 import 'package:shop_app/widgets/app_drawer.dart';
 import 'package:shop_app/widgets/badge.dart';
-import 'file:///D:/code/flutter/shop_app/lib/providers/product.dart';
 import 'package:shop_app/widgets/products_grid.dart';
 
 enum FilterOptions {

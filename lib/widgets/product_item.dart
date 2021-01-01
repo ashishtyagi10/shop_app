@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/providers/cart.dart';
-import 'file:///D:/code/flutter/shop_app/lib/providers/product.dart';
+import 'package:shop_app/providers/product.dart';
 
 import '../screens/product_detail_screen.dart';
 
