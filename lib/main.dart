@@ -10,6 +10,7 @@ import 'package:shop_app/screens/product_detail_screen.dart';
 import 'package:shop_app/screens/products_overview_screen.dart';
 import 'package:shop_app/screens/user_product_screen.dart';
 
+import 'providers/auth.dart';
 import 'providers/orders.dart';
 
 void main() {
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (ctx) => Products()),
         ChangeNotifierProvider(create: (ctx) => Cart()),
         ChangeNotifierProvider(create: (ctx) => Orders()),
+        ChangeNotifierProvider(create: (ctx) => Auth()),
       ],
       child: MaterialApp(
           title: 'Flutter Demo',
