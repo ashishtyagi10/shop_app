@@ -23,19 +23,26 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (ctx) => Products()),
-        ChangeNotifierProvider(create: (ctx) => Cart()),
-        ChangeNotifierProvider(create: (ctx) => Orders()),
         ChangeNotifierProvider(create: (ctx) => Auth()),
+        ChangeNotifierProxyProvider<Auth, Products>(
+          update: (ctx, auth, previousProducts) => Products(auth.token,
+              previousProducts == null ? [] : previousProducts.items),
+        ),
+        ChangeNotifierProvider(create: (ctx) => Cart()),
+        ChangeNotifierProxyProvider<Auth, Orders>(
+          update: (ctx, auth, previousOrders) => Orders(
+              previousOrders == null ? [] : previousOrders.orders, auth.token),
+        ),
       ],
-      child: MaterialApp(
+      child: Consumer<Auth>(
+        builder: (ctx, auth, _) => MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
               primarySwatch: Colors.purple,
               accentColor: Colors.deepOrange,
               visualDensity: VisualDensity.adaptivePlatformDensity,
               fontFamily: 'Lato'),
-          home: AuthScreen(),
+          home: auth.isAuth ? ProductsOverviewScreen() : AuthScreen(),
           routes: {
             ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
             CartScreen.routeName: (ctx) => CartScreen(),
@@ -43,7 +50,9 @@ class MyApp extends StatelessWidget {
             UserProductsScreen.routeName: (ctx) => UserProductsScreen(),
             EditProductScreen.routeName: (ctx) => EditProductScreen(),
             AuthScreen.routeName: (ctx) => AuthScreen(),
-          }),
+          },
+        ),
+      ),
     );
   }
 }

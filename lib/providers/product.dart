@@ -19,12 +19,12 @@ class Product with ChangeNotifier {
       @required this.imageUrl,
       this.isFavorite = false});
 
-  void toggleFavoriteStatus() async {
+  void toggleFavoriteStatus(String token) async {
     final oldStatus = isFavorite;
     isFavorite = !isFavorite;
     notifyListeners();
     final url =
-        'https://flutter-update-d2cef-default-rtdb.firebaseio.com/products/$id.json';
+        'https://flutter-update-d2cef-default-rtdb.firebaseio.com/products/$id.json?auth=$token';
     try {
       final response = await http.patch(url,
           body: json.encode({
