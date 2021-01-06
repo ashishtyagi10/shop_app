@@ -140,7 +140,7 @@ class Products with ChangeNotifier {
     if (prodIndex >= 0) {
       final url =
           'https://flutter-update-d2cef-default-rtdb.firebaseio.com/products/$id.json?auth=$_authToken';
-      final response = await http.patch(url,
+      await http.patch(url,
           body: json.encode({
             'title': newProduct.title,
             'description': newProduct.description,

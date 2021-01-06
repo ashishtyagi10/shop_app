@@ -31,6 +31,7 @@ class Product with ChangeNotifier {
         _setFavoriteValue(oldStatus);
       }
     } on Exception catch (e) {
+      print(e.toString());
       _setFavoriteValue(oldStatus);
     }
   }
