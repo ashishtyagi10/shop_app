@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
       ],
       child: Consumer<Auth>(
         builder: (ctx, auth, _) => MaterialApp(
-          title: 'Flutter Demo',
+          title: 'Crescendofx Fund',
           theme: ThemeData(
             primarySwatch: Colors.purple,
             accentColor: Colors.deepOrange,
@@ -86,10 +86,10 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My App'),
+        title: Text('Crescendofx Fund'),
       ),
       body: Center(
-        child: Text('Welcome to the shopping app'),
+        child: Text('Welcome to the CrescendoFx Fund'),
       ),
     );
   }
